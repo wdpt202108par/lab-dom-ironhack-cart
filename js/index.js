@@ -8,6 +8,13 @@ function updateSubtotal(product) {
 
   let priceValue = price.innerHTML;
   let quantityValue = quantity.value;
+
+  let subtotalPrice = priceValue * quantityValue;
+
+  let subtotal = product.querySelector('.subtotal span');
+
+  subtotal.innerHTML = `${subtotalPrice}`;
+  return `${subtotal}`; 
 }
 
 function calculateAll() {
