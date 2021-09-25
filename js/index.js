@@ -14,7 +14,7 @@ function updateSubtotal(product) {
   let subtotal = product.querySelector('.subtotal span');
 
   subtotal.innerHTML = `${subtotalPrice}`;
-  return `${subtotal}`; 
+  return `${subtotalPrice}`; 
 }
 
 function calculateAll() {
@@ -24,16 +24,20 @@ function calculateAll() {
   //updateSubtotal(singleProduct);
   // end of test
 
-  // ITERATION 2
+// ITERATION 2
 // call the function updateSubtotal with every tr.product DOM node in the table#cart
- let products= document.getElementsByClassName('product');
-   for (i=0; i<products.length; i++){
-     updateSubtotal(products[i]);  
-   }
+  let products= document.getElementsByClassName('product');
+  for (let i=0; i<products.length; i++){
+  updateSubtotal(products[i]);  
+}
  
-
-  // ITERATION 3
-  //... your code goes here
+// ITERATION 3
+let totalPrice = 0;
+for (let i=0; i<products.length; i++){
+totalPrice += updateSubtotal(products[i]);
+}
+   let totalValue = document.querySelector('#total-value span');
+   totalValue.innerHTML = `${totalPrice}`;
 }
 
 // ITERATION 4
