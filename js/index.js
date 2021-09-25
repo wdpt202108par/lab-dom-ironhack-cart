@@ -29,28 +29,29 @@ function calculateAll() {
     allProducts.forEach(function(product) {
         sumproduct += updateSubtotal(product)
     })
-
-    /*
-    const singleProduct = document.querySelector('.product');
-    updateSubtotal(singleProduct);
-    */
-    // end of test
-
     // ITERATION 2
     //... your code goes here
 
     totalValue.innerHTML = sumproduct;
-
-    //calculer sum
 }
 // ITERATION 3
-const totalValue = document.querySelector('#total-value span');
-// ITERATION 4
 
+const totalValue = document.querySelector('#total-value span');
+
+// Bonus
+// ITERATION 4 
 function removeProduct(event) {
-    const target = event.currentTarget;
+    const target = event.currentTarget; //button
+    let removeSubtotal = target.parentNode.parentNode;
+    removeSubtotal.remove();
     console.log('The target in remove is:', target);
+    //target.parentNode.removeChild(target);
     //... your code goes here
+}
+
+var removeBtn = document.getElementsByClassName('btn btn-remove');
+for (var i = 0; i < removeBtn.length; i++){
+    removeBtn[i].addEventListener('click', removeProduct);
 }
 
 // ITERATION 5
