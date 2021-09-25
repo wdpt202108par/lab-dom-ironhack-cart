@@ -12,9 +12,8 @@ function updateSubtotal(product) {
 
   let subtotal = product.querySelector('.subtotal span');
 
-  subtotal.innerHTML = `${subtotalPrice}`;
-
-    return subtotalPrice; 
+  subtotal.innerHTML = subtotalPrice;
+  return subtotalPrice; 
 }
 
 function calculateAll() {
@@ -30,11 +29,13 @@ function calculateAll() {
  
 // ITERATION 3
   let totalPrice = 0;
-  for ( let i = 0 ; i < products.length ; i++ ) {
+  for (let i=0; i<products.length; i++) {
     totalPrice += updateSubtotal(products[i]);
   }
+
   let totalValue = document.querySelector('#total-value span');
-    totalValue.innerHTML = `${totalPrice}`;
+  totalValue.innerHTML= `${totalPrice}`;
+    return totalPrice;   
 }
 
 // ITERATION 4
