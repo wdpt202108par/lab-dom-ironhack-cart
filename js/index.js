@@ -5,9 +5,7 @@ function updateSubtotal(product) {
 
   let price = product.querySelector('.price span').textContent;
   let quantity = product.querySelector('.quantity input').value;
-
   let SubTotal = price * quantity;
-  // console.log(SubTotal);
 
   product.querySelector('.subtotal span').textContent = SubTotal;
 
@@ -16,22 +14,16 @@ function updateSubtotal(product) {
 
 function calculateAll() {
   var products = document.getElementsByClassName('product');
-
   var total = 0;
 
   // ITERATION 2
   for (let product of products) {
     updateSubtotal(product);
-
     total += updateSubtotal(product);
-
   }
 
   // ITERATION 3
-  //... your code goes here
   document.querySelector('#total-value span').textContent = total;
-
-
 }
 
 // ITERATION 4
@@ -39,12 +31,9 @@ function calculateAll() {
 function removeProduct(event) {
   const target = event.currentTarget;
   console.log('The target in remove is:', target);
-  //... your code goes here
-  
+
   let tbody = document.querySelector('#cart tbody');
-
   let theTr = target.parentNode.parentNode;
-
 
   tbody.removeChild(theTr);
 
@@ -53,7 +42,15 @@ function removeProduct(event) {
 // ITERATION 5
 
 function createProduct() {
-  //... your code goes here
+  let product = document.querySelectorAll(".create-product input");
+  let productName = product[0].value;
+  let productPrice = product[1].value;
+  let tbody = document.querySelector("#cart tbody");
+  let newRow = document.querySelector("#cart tbody .product").cloneNode(true);
+  newRow.querySelector(".name span").innerHTML = productName;
+  newRow.querySelector(".price span").innerHTML = productPrice;
+
+  tbody.appendChild(newRow);
 }
 
 window.addEventListener('load', () => {
@@ -65,5 +62,9 @@ window.addEventListener('load', () => {
 
   for (let element of btn) {
       element.addEventListener('click', removeProduct);
-} 
+  }
+
+  let create = document.querySelector("#create");
+
+  create.addEventListener("click", createProduct);
 });
